@@ -3,7 +3,9 @@
     <div class="cover-inner">
       <div class="cover-contents">
         <h1>素敵なお店を見つけよう</h1>
-        <a href="" class="btn btn-success btn-lg">レストランリストを始める</a>
+          <% unless logged_in? %>
+            <%= link_to "レストランリストを始める", signup_path, class: "btn btn-success btn-lg" %>
+          <% end %>
       </div>
     </div>
   </div>
