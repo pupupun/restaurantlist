@@ -1,0 +1,16 @@
+<h1>Rests#new</h1>
+<p>Find me in app/views/rests/new.html.erb</p>
+
+<%= form_tag new_rest_path, method: :get do %>
+  <%= text_field_tag :keyword %>
+  
+  <%= submit_tag %>
+<% end %>
+
+<% if @rests.present? %>
+  <ul>
+    <% @rests.each do |rest| %>
+      <li><%= rest.name %></li>
+    <% end %>
+  <//ul>
+<% end %>
