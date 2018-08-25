@@ -1,16 +1,24 @@
-<h1>Rests#new</h1>
-<p>Find me in app/views/rests/new.html.erb</p>
-
-<%= form_tag new_rest_path, method: :get do %>
-  <%= text_field_tag :keyword %>
-  
-  <%= submit_tag %>
-<% end %>
-
-<% if @rests.present? %>
-  <ul>
-    <% @rests.each do |rest| %>
-      <li><%= rest.name %></li>
-    <% end %>
-  <//ul>
-<% end %>
+<div class="search">
+  <div class="row">
+    <div class="text-center">
+      <%= form_tag new_rest_path, method: :get do %>
+        <%= text_field_tag :keyword %>
+        
+        <%= submit_tag 'お店を検索', class: 'btn btn-success btn-lg' %>
+      <% end %>
+      
+      <% if @rests.present? %>
+        <ul>
+          <% @rests.each do |rest| %>
+            <li><%= rest.name %></li>
+            <li><%= rest.address %></li>
+            <li><%= rest.tel %></li>
+            <li><%= rest.shop_image1 %></li>
+            <li><%= rest.shop_image2 %></li>
+            <li><%= rest.qrcode %></li>
+          <% end %>
+        <//ul>
+      <% end %>
+       </div>
+  </div>
+</div>
