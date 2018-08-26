@@ -1,0 +1,15 @@
+<% ownershiop_rest = Rest.find_by(shop_id: rest.shop_id) %>
+
+<% if current_user.interest?(ownershiop_rest) %>
+  <%= form_tag(ownership_path(ownershiop_rest.id), method: :delete) do %>
+    <%= hidden_field_tag :shop_id, rest.shop_id %>
+    <%= hidden_field_tag :type, 'Interest' %>
+    <%= submit_tag 'Interest', class: 'btn btn-success' %>
+  <% end %>
+<% else %>
+  <%= form_tag(ownerships_path) do %>
+    <%= hidden_field_tag :shop_id, rest.shop_id %>
+    <%= hidden_field_tag :type, 'Interest' %>
+    <%= submit_tag 'Interest it', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

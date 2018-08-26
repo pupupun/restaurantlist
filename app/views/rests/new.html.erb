@@ -8,17 +8,68 @@
       <% end %>
       
       <% if @rests.present? %>
-        <ul>
+        <div class="row">
           <% @rests.each do |rest| %>
-            <li><%= rest.name %></li>
-            <li><%= rest.address %></li>
-            <li><%= rest.tel %></li>
-            <li><%= rest.shop_image1 %></li>
-            <li><%= rest.shop_image2 %></li>
-            <li><%= rest.qrcode %></li>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="panel panel-default">
+                <!---<div class="panel-heading"></div>-->
+                <div class="panel-body">
+                  <%= image_tag rest.shop_image1 if rest.shop_image1.present? %>
+                </div>
+                <div class="panel-footer">
+                  <ul>
+                    <li><%= rest.name %></li>
+                    <li><%= rest.address %></li>
+                    <li><%= rest.tel %></li>
+                    <%= (content_tag(:li) { image_tag rest.qrcode }) if rest.qrcode.present? %>
+                    <li class="button-group">
+                      <span><%= render 'ownerships/interest_button', rest: rest %></span>
+                      <span><%= render 'ownerships/interest_button', rest: rest %></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           <% end %>
-        <//ul>
+        </div>
       <% end %>
        </div>
   </div>
 </div>
+
+<style>
+
+  .search .panel-body {
+    height: 300px;
+    position: relative;
+  }
+  
+  .search .panel-body img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .search .panel-footer li  {
+    list-style: none;
+  }
+  
+  .search .panel-footer {
+    height: 180px;
+    position: relative;
+  }
+  
+  .search .button-group {
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .search .button-group span {
+    display: inline-block;
+  }
+</style>

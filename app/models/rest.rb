@@ -5,5 +5,10 @@ class Rest < ApplicationRecord
   validates :tel, presence: true, length: { maximum: 255 }
   validates :shop_image1, presence: true, length: { maximum: 255 }
   validates :shop_image2, presence: true, length: { maximum: 255 }
-  validates :qrcode, presence: true, length: { maximum: 255 }
+  # validates :qrcode, presence: true, length: { maximum: 255 }
+  
+  has_many :ownerships
+  has_many :users, through: :ownerships
+  has_many :interests
+  has_many :interest_users, through: :interests, class_name: 'User', source: :user
 end

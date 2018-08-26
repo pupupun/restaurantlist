@@ -1,11 +1,13 @@
 <% if rests %>
   <div class="row">
     <% rests.each do |rest| %>
-      <div class="item">
+      <div class="rest">
         <div class="col-md-3 col-sm-4 col-xs-12">
           <div class="panel panel-default">
             <div class="panel-heading text-center">
               <img src="<%= rest.shop_image1 %>" alt="" >
+              <img src="<%= rest.shop_image2 %>" alt="" >
+              <img src="<%= rest.qrcode %>" alt="" >
             </div>
             <div class="panel-body">
               <p class="rest-title"><%= rest.name %></p>

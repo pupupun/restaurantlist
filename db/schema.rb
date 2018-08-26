@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824143139) do
+ActiveRecord::Schema.define(version: 20180825035806) do
+
+  create_table "ownerships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "rest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rest_id"], name: "index_ownerships_on_rest_id", using: :btree
+    t.index ["user_id", "rest_id", "type"], name: "index_ownerships_on_user_id_and_rest_id_and_type", unique: true, using: :btree
+    t.index ["user_id"], name: "index_ownerships_on_user_id", using: :btree
+  end
 
   create_table "rests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "shop_id"
@@ -32,4 +43,6 @@ ActiveRecord::Schema.define(version: 20180824143139) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "ownerships", "rests"
+  add_foreign_key "ownerships", "users"
 end
