@@ -1,4 +1,9 @@
 class RestsController < ApplicationController
+  
+  def show
+    @rest = Rest.find(params[:id])
+    @interest_users = @rest.interest_users
+  end
 
   def new
     @keyword = params[:keyword]

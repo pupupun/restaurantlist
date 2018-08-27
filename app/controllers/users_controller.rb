@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show]
   def show
     @user = User.find(params[:id])
+    @rests = @user.rests.uniq
+    @count_interest = @user.interest_rests.count
   end
 
   def new

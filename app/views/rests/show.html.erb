@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
+    <div class="rest">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <img src="<%= rest.shop_image1 %>" alt="" >
+           <img src="<%= rest.shop_image2 %>" alt="" >
+           <img src="<%= rest.qrcode %>" alt="" >
+        </div>
+        <div class="panel-body">
+          <p class="rest-title"><%= @rest.name %></p>
+          <div class="buttons text-center">
+            <% if logged_in? %>
+              <%= render 'ownerships/interest_button', rest: @rest %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="interest-users">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Interestしたユーザ
+        </div>
+        <div class="panel-body">
+          <% @interest_users.each do |user| %>
+            <%= link_to user.name, user_path(user) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="recommend-users">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Recommendしたユーザ
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+    <p class="text-center"><%= link_to 'ぐるなび詳細ページ', @rest.url, target: '_blank' %></p>
+  </div>
+</div>

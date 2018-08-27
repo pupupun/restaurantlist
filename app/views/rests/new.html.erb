@@ -23,8 +23,10 @@
                     <li><%= rest.tel %></li>
                     <%= (content_tag(:li) { image_tag rest.qrcode }) if rest.qrcode.present? %>
                     <li class="button-group">
-                      <span><%= render 'ownerships/interest_button', rest: rest %></span>
-                      <span><%= render 'ownerships/interest_button', rest: rest %></span>
+                      <% if logged_in? %>
+                        <span><%= render 'ownerships/interest_button', rest: rest %></span>
+                        <span><%= render 'ownerships/interest_button', rest: rest %></span>
+                      <% end %>
                     </li>
                   </ul>
                 </div>
